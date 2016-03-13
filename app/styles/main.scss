@@ -1,0 +1,139 @@
+// bower:scss
+@import "bower_components/font-awesome/scss/font-awesome.scss";
+// endbower
+
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+$gray-light: #dfdfdf;
+$gray-dark: #cecece;
+$brand-primary: #0056b8;
+$brand-secondary: #2b95dc;
+$neutral-white: #fff;
+$neutral-black: #3e4142;
+
+body {
+  background: $neutral-white;
+  font-family: 'Raleway', sans-serif, Helvetica, Arial;
+  color: $neutral-black;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  box-sizing: border-box;
+}
+
+.flex-item{
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.flex{
+  @extend .flex-container;
+  @extend .flex-item;
+}
+
+@mixin da-column{
+  flex-direction: column;
+  text-align: center;
+}
+
+.da-cal{
+  @include da-column;
+}
+
+.da-cal-data-wrap{
+  flex: 1;
+}
+
+.da-cal-header{
+  min-height: 60px;
+}
+
+.da-cal-data{
+  @include da-column;
+  background-color: $gray-light;
+  min-width: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.da-cal-data:nth-child(even){
+  background-color: $gray-dark;
+}
+
+.da-cal-day, .da-cal-date, .da-cal-month{
+
+}
+
+.da-cal-odd-day{
+  background-color: $gray-light;
+}
+.da-cal-even-day{
+  background-color: $gray-dark;
+}
+
+.da-cal-cell {
+  @include da-column;  
+  justify-content: center;
+  height: 30px;
+  width: 60px;
+  color: $neutral-white;
+  text-align: center;
+  font-size: 12px;
+  font-family: Arial;
+}
+
+.da-cal-am-cell {
+  background-color: $brand-secondary;
+}
+.da-cal-pm-cell {
+  background-color: $brand-primary;
+}
+.da-cal-expand-cell{
+  background-color: $neutral-white;
+  border: 1px solid $brand-primary;
+}
+.da-badge{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: $brand-primary;
+  color: $neutral-white;
+}
+
+.da-cal-nav-wrap{
+  @include da-column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+}
+.fa{
+  font-size: 24px;
+}
+
+@mixin hide-cal-data($child-index, $max-width) {
+  .da-cal-data:nth-child(#{$child-index}){
+    @media (max-width: $max-width){
+      display: none;
+    }
+  }
+}
+
+@include hide-cal-data(7, 620px);
+@include hide-cal-data(6, 520px);
+@include hide-cal-data(5, 420px);
+@include hide-cal-data(4, 320px);
+@include hide-cal-data(3, 220px);
+@include hide-cal-data(2, 120px);
+
+.da-cal-body{
+  margin-top: 5px;
+}
