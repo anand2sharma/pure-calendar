@@ -42,6 +42,11 @@ body {
   text-align: center;
 }
 
+@mixin da-v-pad($v-pad: 10px){
+  padding-top: $v-pad;
+  padding-bottom: $v-pad;
+}
+
 .da-cal{
   @include da-column;
 }
@@ -56,6 +61,7 @@ body {
 
 .da-cal-data{
   @include da-column;
+  @include da-v-pad;
   background-color: $gray-light;
   min-width: 80px;
   padding-left: 10px;
@@ -81,7 +87,8 @@ body {
 }
 
 .da-cal-cell {
-  @include da-column;  
+  @include da-column;
+  text-decoration: none;
   justify-content: center;
   height: 30px;
   width: 60px;
@@ -136,4 +143,5 @@ body {
 
 .da-cal-body{
   margin-top: 5px;
+  flex-direction: column;
 }
